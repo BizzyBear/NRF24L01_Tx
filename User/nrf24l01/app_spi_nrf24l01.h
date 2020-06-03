@@ -92,14 +92,19 @@
 #define      NRF24L01_IRQ_PORT                 GPIOA
 #define      NRF24L01_IRQ_PIN                  GPIO_Pin_2
 
-#define  		Set_CS_LOW()     						GPIO_ResetBits( NRF24L01_SPI_CS_PORT, NRF24L01_SPI_CS_PIN )
-#define  		Set_CS_HIGH()    						GPIO_SetBits( NRF24L01_SPI_CS_PORT, NRF24L01_SPI_CS_PIN )
+#define         Set_SPI_CS_LOW()     						GPIO_ResetBits( NRF24L01_SPI_CS_PORT, NRF24L01_SPI_CS_PIN )
+#define  		Set_SPI_CS_HIGH()    						GPIO_SetBits( NRF24L01_SPI_CS_PORT, NRF24L01_SPI_CS_PIN )
+#define         Set_CE_LOW()                                GPIO_ResetBits( NRF24L01_CE_PORT, NRF24L01_CE_PIN )
+#define         Set_CE_HIGH()                               GPIO_SetBits( NRF24L01_CE_PORT, NRF24L01_CE_PIN )
 #define			Read_IRQ()									GPIO_ReadInputDataBit( NRF24L01_IRQ_PORT, NRF24L01_IRQ_PIN )
 /*SPI接口定义-结尾****************************/
 
 /*等待超时时间*/
 #define SPIT_FLAG_TIMEOUT         ((uint32_t)0x1000)
 #define SPIT_LONG_TIMEOUT         ((uint32_t)(10 * SPIT_FLAG_TIMEOUT))
+
+//读取用，空白字节
+#define Dummy_Byte                0xFF
 
 void NRF24L01_Init(void);//初始化
 void RX_Mode(void);//配置为接收模式
